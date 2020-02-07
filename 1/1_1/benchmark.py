@@ -28,10 +28,11 @@ if __name__ == "__main__":
     lists['30000reversed'] = list(reversed(lists['30000']))
 
     algorithms = [
-        'selection_sort',
-        'insertion_sort',
-        'merge_sort',
-		'bucket_sort'
+        # 'selection_sort',
+        # 'insertion_sort',
+        # 'merge_sort',
+		'bucket_sort',
+        'quick_sort'
     ]
 
     time_algorithms(algorithms, lists)
