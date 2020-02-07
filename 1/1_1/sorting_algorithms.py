@@ -1,5 +1,5 @@
 from typing import List
-
+import math 
 def selection_sort(data: List[int]) -> None:
     """Sort an array using selection sort"""
     # loop over len(data) -1 elements
@@ -117,3 +117,23 @@ def recursive_merge_sort(data: List[int]) -> List[int]:
         middle = int(len(data)/2) # find the middle (round down if len(data) is odd)
         first, second = data[:middle], data[middle:] # split the list in half
         return merge_arrays(recursive_merge_sort(first), recursive_merge_sort(second)) # merge_sort both arrays, and merge them into the result
+
+def bucket_sort(array: List[int]) -> List[int]:
+    "Bucket sort implementation for sorting arrays"
+    bucket = [[] for _ in range(10)]
+    max_length = len(repr(max(array)))
+
+    for n in range(1, max_length+1):
+        count = 0
+        for elem in array:
+            i = math.floor((elem % 10**n) / 10**(n-1))
+            bucket[i].append(elem)
+
+        for x in range(len(bucket)):
+            for y in range(len(bucket[x])):
+                array[count] = bucket[x][y]
+                count += 1
+
+        bucket = [[] for _ in range(10)]
+    return array
+    

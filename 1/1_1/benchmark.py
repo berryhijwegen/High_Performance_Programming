@@ -31,6 +31,7 @@ if __name__ == "__main__":
         'selection_sort',
         'insertion_sort',
         'merge_sort',
+		'bucket_sort'
     ]
 
     time_algorithms(algorithms, lists)
