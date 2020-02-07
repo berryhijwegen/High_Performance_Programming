@@ -120,21 +120,21 @@ def recursive_merge_sort(data: List[int]) -> List[int]:
 
 def bucket_sort(array: List[int]) -> List[int]:
     "Bucket sort implementation for sorting arrays"
-    bucket = [[] for _ in range(10)]
+    buckets = [[] for _ in range(10)]
     max_length = len(repr(max(array)))
 
     for n in range(1, max_length+1):
         count = 0
-        for elem in array:
-            i = math.floor((elem % 10**n) / 10**(n-1))
-            bucket[i].append(elem)
+        for number in array:
+            i = math.floor((number % 10**n) / 10**(n-1))
+            buckets[i].append(number)
 
-        for x in range(len(bucket)):
-            for y in range(len(bucket[x])):
-                array[count] = bucket[x][y]
+        for bucket in buckets:
+            for number in bucket:
+                array[count] = number
                 count += 1
 
-        bucket = [[] for _ in range(10)]
+        buckets = [[] for _ in range(10)]
     return array
     
 def partition(arr, start, end):
